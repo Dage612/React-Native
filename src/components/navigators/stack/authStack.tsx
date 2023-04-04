@@ -1,8 +1,8 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import WelcomeScreen from '../screens/welcomeScreen/Welcome';
-import LoginScreen from '../screens/loginScreen/login';
+import WelcomeScreen from '../../screens/welcomeScreen/Welcome';
+import LoginScreen from '../../screens/loginScreen/login';
 
 export type RootAuthStackParams = {
   Login: {
