@@ -2,6 +2,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { AuthUse } from "../contexts/authContexts";
 import AuthStack from "./stack/authStack";
 import DrawerNavigation from "./drawer/drawerNavigate";
+import AllScreen from "./stack/appStack";
+import TabScreen from "./tab/tabNavigate";
+
 
 
 export default function Routing() {
@@ -9,7 +12,13 @@ export default function Routing() {
 
   return (
     <NavigationContainer>
-    {user && Object.keys(user).length > 0 ? <DrawerNavigation /> : <AuthStack />}
+    {user && Object.keys(user).length > 0 ? (
+      <>
+        <DrawerNavigation /> 
+      </>
+    ) : (
+      <AuthStack />
+    )}
   </NavigationContainer>
   );
 }

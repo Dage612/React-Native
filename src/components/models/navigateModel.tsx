@@ -1,6 +1,6 @@
 
 export type TabParamList = {
-  Home: undefined;
+  Inventary: undefined;
   Settings: undefined;
   TabScreen:undefined;
   AllScreen: undefined;

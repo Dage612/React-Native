@@ -2,7 +2,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 import { UserTypes } from "../models/userModel";
 import { AuthTypes } from "../models/authModel";
-
 import { authService } from "../services/authService"
 
 export const AuthContext = createContext<AuthTypes>({} as AuthTypes);

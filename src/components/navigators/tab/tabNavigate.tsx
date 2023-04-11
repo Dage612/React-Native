@@ -1,21 +1,22 @@
 import React from 'react';
+import { useNavigationState } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabParamList } from '../../models/navigateModel';
 import SettingsScreen from '../../screens/settingsScreen/Settings';
-import AllScreen from '../stack/appStack';
-import WelcomeScreen from '../../screens/welcomeScreen/Welcome';
-
-
+import InventaryScreen from '../../screens/inventaryScreen/Inventary';
+import { useRoute } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator<TabParamList>();
-
 const TabScreen = () => {
+  const { name } = useRoute();
+  const currentRoute = name as keyof TabParamList;
+  
   return (
-      <Tab.Navigator initialRouteName='Home' screenOptions={{
+      <Tab.Navigator initialRouteName={currentRoute} screenOptions={{
         headerShown:false
       }}>
-        <Tab.Screen name="Home" component={WelcomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Inventary" component={InventaryScreen}   options={({ route }) => ({ headerTitle: route.name })}  />
+        <Tab.Screen name="Settings" component={SettingsScreen}    options={({ route }) => ({ headerTitle: route.name })} />
       </Tab.Navigator>
   );
 }

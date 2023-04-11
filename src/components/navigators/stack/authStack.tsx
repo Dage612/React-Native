@@ -1,14 +1,12 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-import WelcomeScreen from '../../screens/welcomeScreen/Welcome';
 import LoginScreen from '../../screens/loginScreen/login';
+import InventaryScreen from '../../screens/inventaryScreen/Inventary';
 
 export type RootAuthStackParams = {
   Login: {
     name: string;
   };
-  Welcome: any;
 };
 
 const RootStack = createNativeStackNavigator<RootAuthStackParams>();
@@ -20,10 +18,6 @@ const AuthStack = () => {
         name="Login"
         component={LoginScreen}
         options={{headerShown: false}}></RootStack.Screen>
-      <RootStack.Screen
-        name="Welcome"
-        component={WelcomeScreen}
-        options={{headerShown: true}}></RootStack.Screen>
     </RootStack.Navigator>
   );
 };
