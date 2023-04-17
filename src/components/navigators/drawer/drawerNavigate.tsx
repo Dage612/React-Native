@@ -1,18 +1,21 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { TabParamList } from '../../models/navigateModel';
-import TabScreen from '../tab/tabNavigate';
+import { DrawerParamList, TabParamList } from '../../models/navigateModel';
+import InventoryScreen from '../../screens/inventoryScreen/Inventory';
+import SettingsScreen from '../../screens/settingsScreen/Settings';
+import TabBillScreen from '../tab/tabBillNavigate';
 
 
-const Drawer = createDrawerNavigator<TabParamList>();
+const Drawer = createDrawerNavigator<DrawerParamList>();
 
 const DrawerNavigation = () => {
   return (
-      <Drawer.Navigator initialRouteName='TabScreen'>
-        <Drawer.Screen name="Inventary" component={TabScreen} />
-        <Drawer.Screen name="Settings" component={TabScreen} />
-        <Drawer.Screen name="TabScreen" component={TabScreen} />
-      </Drawer.Navigator>
+    <Drawer.Navigator initialRouteName='Facturacion'>
+      <Drawer.Screen name="Facturacion" component={TabBillScreen} options={{title: 'Facturación'}} />
+      <Drawer.Screen name="Articulos" component={InventoryScreen} options={{title: 'Artículos'}} />
+      <Drawer.Screen name="Configuracion" component={SettingsScreen} options={{title: 'Configuración'}} />
+    </Drawer.Navigator>
   );
 }
+
 
 export default DrawerNavigation;

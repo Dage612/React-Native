@@ -1,7 +1,11 @@
-
 export type TabParamList = {
   Inventary: undefined;
-  Settings: undefined;
-  TabScreen:undefined;
-  AllScreen: undefined;
+  BillScreen: undefined;
+};
+
+export type DrawerParamList = {
+  Facturacion: undefined;
+  Inventario: undefined;
+  Articulos:undefined;
+  Configuracion: undefined;
 };

@@ -24,7 +24,7 @@ const renderItem = ({ item }: RenderItemProps) => (
   </View>
 );
 
-const InventaryScreen = () => {
+const InventoryScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Bienvenido que buen video</Text>
@@ -37,4 +37,4 @@ const InventaryScreen = () => {
   );
 };
 
-export default InventaryScreen;
+export default InventoryScreen;

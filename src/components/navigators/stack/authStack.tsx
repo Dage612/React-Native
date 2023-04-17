@@ -1,7 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../../screens/loginScreen/login';
-import InventaryScreen from '../../screens/inventaryScreen/Inventary';
+import InventaryScreen from '../../screens/inventoryScreen/Inventory';
 
 export type RootAuthStackParams = {
   Login: {

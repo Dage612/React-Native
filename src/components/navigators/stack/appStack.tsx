@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabParamList } from '../../models/navigateModel';
 import SettingsScreen from '../../screens/settingsScreen/Settings';
-import InventaryScreen from '../../screens/inventaryScreen/Inventary';
+import InventaryScreen from '../../screens/inventoryScreen/Inventory';
 
 
 

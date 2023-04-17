@@ -3,7 +3,7 @@ import { AuthUse } from "../contexts/authContexts";
 import AuthStack from "./stack/authStack";
 import DrawerNavigation from "./drawer/drawerNavigate";
 import AllScreen from "./stack/appStack";
-import TabScreen from "./tab/tabNavigate";
+import TabScreen from "./tab/tabBillNavigate";
 
 
 
