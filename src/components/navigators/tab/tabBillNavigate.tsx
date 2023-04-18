@@ -11,11 +11,31 @@ const TabBillScreen = () => {
   const { name } = useRoute();
   const currentRoute = name as keyof TabParamList;
   return (
-      <Tab.Navigator initialRouteName={currentRoute} screenOptions={{
-        headerShown:false
-      }}>
-        <Tab.Screen name="Inventary" component={InventoryScreen} options={{title: 'Artículos'}}/>
-        <Tab.Screen name="BillScreen" component={BillScreen} options={{title: 'Facturar'}}/>
+      <Tab.Navigator 
+        initialRouteName={currentRoute} 
+        screenOptions={{
+          headerShown:false,
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveTintColor: 'gray',
+          tabBarStyle: { backgroundColor: 'blue' }
+        }}
+      >
+        <Tab.Screen 
+          name="Inventary" 
+          component={InventoryScreen} 
+          options={{
+            title: 'Artículos',
+            tabBarLabelStyle: { fontSize: 10, fontWeight: 'bold' },
+          }}
+        />
+        <Tab.Screen 
+          name="BillScreen" 
+          component={BillScreen} 
+          options={{
+            title: 'Facturar',
+            tabBarLabelStyle: { fontSize: 10, fontWeight: 'bold' },
+          }}
+        />
       </Tab.Navigator>
   );
 }
