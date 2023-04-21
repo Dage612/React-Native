@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity, TextInput } from "react-native";
 import { useTodos } from "../../contexts/inventoryContexts";
-import { Todo } from "../../models/inventoryModel";
+import { Article } from "../../models/inventoryModel";
 
 const InventoryScreen = () => {
   const { todos, cargandoTodos, obtenerTodos } = useTodos();
@@ -16,10 +16,11 @@ const InventoryScreen = () => {
   const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
 
-  const filteredTodos = todos.filter((item: Todo) => {
-    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredTodos = todos.filter((item: Article) => {
+    return item.code.includes(searchTerm.toLowerCase());
   }).slice(startIndex, endIndex);
-
+  
+  
   const handleLoadMore = () => {
     setCurrentPage(currentPage + 1);
   };
@@ -43,13 +44,13 @@ const InventoryScreen = () => {
         />
       </View>
       <ScrollView contentContainerStyle={styles.listContainer}>
-        {filteredTodos.map((item: Todo) => (
+        {filteredTodos.map((item: Article) => (
           <View style={styles.card} key={item.id}>
-            <Image source={{ uri: 'https://picsum.photos/id/237/536/354'}} style={styles.image} />
+            <Image source={require('C:/Users/David/Desktop/CoreAppReactNative/src/assets/imgs/icon.png')}  style={styles.image} />
             <View style={styles.cardDetails}>
-              <Text style={[styles.title, { color: '#000' }]}>{item.title}</Text>
-              <Text style={[styles.description, { color: '#000' }]}>{item.title}</Text>
-              <Text style={[styles.price, { color: '#000' }]}>${item.title}</Text>
+              <Text style={[styles.title, { color: '#000' }]}>{item.code}</Text>
+              <Text style={[styles.description, { color: '#000' }]}>{item.description}</Text>
+              <Text style={[styles.price, { color: '#000' }]}>₡{item.price}</Text>
               <TouchableOpacity style={styles.addButton}>
                 <Text style={styles.addButtonText}>+</Text>
               </TouchableOpacity>
