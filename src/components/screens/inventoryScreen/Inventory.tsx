@@ -4,7 +4,7 @@ import { useTodos } from "../../contexts/inventoryContexts";
 import { Article } from "../../models/inventoryModel";
 
 const InventoryScreen = () => {
-  const { todos, cargandoTodos, obtenerTodos } = useTodos();
+  const { todos, cargandoTodos, obtenerTodos , buscarPorCodigo} = useTodos();
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,11 +18,12 @@ const InventoryScreen = () => {
 
   const filteredTodos = todos.filter((item: Article) => {
     return item.code.includes(searchTerm.toLowerCase());
-  }).slice(startIndex, endIndex);
-  
-  
-  const handleLoadMore = () => {
-    setCurrentPage(currentPage + 1);
+  }).slice(startIndex, endIndex); 
+
+
+  const handleSearch = (text: string) => {
+    setSearchTerm(text);
+    buscarPorCodigo(text); // Llama a la función buscarPorCodigo con el valor del TextInput
   };
 
   if (cargandoTodos) {
@@ -32,7 +33,6 @@ const InventoryScreen = () => {
       </View>
     );
   }
-
   return (
     <View>
       <View style={styles.searchBar}>
@@ -40,7 +40,7 @@ const InventoryScreen = () => {
           placeholder="Buscar"
           style={styles.searchInput}
           value={searchTerm}
-          onChangeText={setSearchTerm}
+          onChangeText={handleSearch }
         />
       </View>
       <ScrollView contentContainerStyle={styles.listContainer}>

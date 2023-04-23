@@ -1,8 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useCallback } from "react";
 import { Article } from "../models/inventoryModel";
-import {  inventoryService } from "../services/inventaryService"
-
-
+import { inventoryService } from "../services/inventaryService";
 
 
 interface TodosContextProps {
@@ -10,7 +8,7 @@ interface TodosContextProps {
   cargandoTodos: boolean;
   todoActual: Article | undefined;
   obtenerTodos: () => void;
-  obtenerTodoPorId: (id: number) => void;
+  buscarPorCodigo: (codigo: string) => Promise<void>;
   setTodoActual: (todo: Article | undefined) => void;
 }
 
@@ -19,7 +17,7 @@ const TodosContext = createContext<TodosContextProps>({
   todoActual: undefined,
   cargandoTodos: false,
   obtenerTodos: () => {},
-  obtenerTodoPorId: () => {},
+  buscarPorCodigo: async (codigo: string) => {},
   setTodoActual: () => {},
 });
 
@@ -30,7 +28,7 @@ export const TodosContextProvider: React.FC<React.PropsWithChildren> = ({
   const [todoActual, setTodoActual] = useState<Article | undefined>(undefined);
   const [cargandoTodos, setCargandoTodos] = useState(false);
 
-  const obtenerTodos = React.useCallback(async () => {
+  const obtenerTodos = useCallback(async () => {
     try {
       setCargandoTodos(true);
       const todos = await inventoryService.GetInventoryByUser();
@@ -40,32 +38,24 @@ export const TodosContextProvider: React.FC<React.PropsWithChildren> = ({
       console.error(error);
     }
   }, []);
-
-  const obtenerTodoPorId = React.useCallback(async (id: number) => {
+  const buscarPorCodigo = async (codigo: string): Promise<void> => {
     try {
       setCargandoTodos(true);
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${id}`
-      );
-      const todo = await response.json();
-      setTodoActual(todo);
+      const resultado = await inventoryService.GetInventoryByCode(codigo);
+      setTodoActual(resultado);
       setCargandoTodos(false);
-      return todo;
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  };
 
-  // React.useEffect(() => {
-  //   obtenerTodos();
-  // }, [obtenerTodos]);
 
   const contextValue: TodosContextProps = {
     todos,
     todoActual,
     cargandoTodos,
     obtenerTodos,
-    obtenerTodoPorId,
+    buscarPorCodigo,
     setTodoActual,
   };
 
@@ -76,4 +66,4 @@ export const TodosContextProvider: React.FC<React.PropsWithChildren> = ({
   );
 };
 
-export const useTodos = () => useContext<TodosContextProps>(TodosContext);
+export const useTodos = (): TodosContextProps => useContext(TodosContext);

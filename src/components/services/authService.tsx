@@ -1,9 +1,9 @@
-
 import axios from 'axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { environment } from "./apiService";
 import { UserTypes } from '../models/userModel';
 import { Alert} from 'react-native';
+
 const apiBase = environment.appUrl;
 
 const SingIn = async (email: string, password: string): Promise<UserTypes> => {
@@ -13,6 +13,9 @@ const SingIn = async (email: string, password: string): Promise<UserTypes> => {
     const token = response.data.token;
     if (token) {
       await AsyncStorage.setItem("@token", token);
+      await AsyncStorage.setItem("@companyId", response.data.companyId);
+      await AsyncStorage.setItem("@access", response.data.companyId);
+      await AsyncStorage.setItem("@userId", response.data.userId);
       return { email, name: response.data.userName };
     }
     throw new Error(response.data.message || 'Error desconocido');
@@ -26,8 +29,6 @@ const SingIn = async (email: string, password: string): Promise<UserTypes> => {
   }
 };
 
-
-
 const SignOut = () => {
   return new Promise((resolve) => {
     setTimeout(async () => {
@@ -36,8 +37,6 @@ const SignOut = () => {
     }, 1000);
   });
 };
-
-
 export const authService = {
   SingIn,
   SignOut
