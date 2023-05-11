@@ -13,13 +13,15 @@ const InventoryScreen = () => {
     obtenerTodos();
   }, []);
 
+
   const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
 
   const filteredTodos = todos.filter((item: Article) => {
     return item.code.includes(searchTerm.toLowerCase());
-  }).slice(startIndex, endIndex); 
+  });
 
+  const paginatedTodos = filteredTodos.slice(startIndex, endIndex);
 
   const handleSearch = (text: string) => {
     setSearchTerm(text);
@@ -44,9 +46,9 @@ const InventoryScreen = () => {
         />
       </View>
       <ScrollView contentContainerStyle={styles.listContainer}>
-        {filteredTodos.map((item: Article) => (
+        {paginatedTodos.map((item: Article) => (
           <View style={styles.card} key={item.id}>
-            <Image source={require('C:/Users/David/Desktop/CoreAppReactNative/src/assets/imgs/icon.png')}  style={styles.image} />
+            <Image source={require('C:/Users/Analista/Desktop/SolucionesMovil/CoreAppReactNative/src/assets/imgs/icon.png')}  style={styles.image} />
             <View style={styles.cardDetails}>
               <Text style={[styles.title, { color: '#000' }]}>{item.code}</Text>
               <Text style={[styles.description, { color: '#000' }]}>{item.description}</Text>
@@ -57,14 +59,6 @@ const InventoryScreen = () => {
             </View>
           </View>
         ))}
-        {/* {endIndex < todos.length && (
-          <TouchableOpacity
-            style={styles.loadMoreButton}
-            onPress={handleLoadMore}
-          >
-            <Text style={styles.loadMoreButtonText}>Cargar más</Text>
-          </TouchableOpacity>
-        )} */}
       </ScrollView>
     </View>
   );

@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  appUrl: "https://fasauto.net/api/",
+  appUrl: "http://172.16.2.130:45456/",
 };

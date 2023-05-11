@@ -42,13 +42,14 @@ export const TodosContextProvider: React.FC<React.PropsWithChildren> = ({
     try {
       setCargandoTodos(true);
       const resultado = await inventoryService.GetInventoryByCode(codigo);
+      setTodos(resultado ? [resultado] : []); // Actualizar todos con el resultado de búsqueda o un array vacío
       setTodoActual(resultado);
       setCargandoTodos(false);
     } catch (error) {
       console.error(error);
     }
   };
-
+  
 
   const contextValue: TodosContextProps = {
     todos,

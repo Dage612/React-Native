@@ -7,7 +7,7 @@ import { Alert} from 'react-native';
 const apiBase = environment.appUrl;
 
 const SingIn = async (email: string, password: string): Promise<UserTypes> => {
-  const postData = { user: email, password: password };
+  const postData = { user: email.trim(), password: password.trim() };
   try {
     const response = await axios.post(apiBase + 'api/Account/Login', postData);
     const token = response.data.token;
