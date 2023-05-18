@@ -6,8 +6,9 @@ import { Article } from "../../models/inventoryModel";
 const InventoryScreen = () => {
   const { todos, cargandoTodos, obtenerTodos , buscarPorCodigo} = useTodos();
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(10);
+  const [perPage, setPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState('');
+
 
   useEffect(() => {
     obtenerTodos();
@@ -48,11 +49,12 @@ const InventoryScreen = () => {
       <ScrollView contentContainerStyle={styles.listContainer}>
         {paginatedTodos.map((item: Article) => (
           <View style={styles.card} key={item.id}>
-            <Image source={require('C:/Users/Analista/Desktop/SolucionesMovil/CoreAppReactNative/src/assets/imgs/icon.png')}  style={styles.image} />
+            <Image source={require('C:/Users/David/Desktop/CoreAppReactNative/src/assets/imgs/icon.png')}  style={styles.image} />
             <View style={styles.cardDetails}>
               <Text style={[styles.title, { color: '#000' }]}>{item.code}</Text>
               <Text style={[styles.description, { color: '#000' }]}>{item.description}</Text>
-              <Text style={[styles.price, { color: '#000' }]}>₡{item.price}</Text>
+              <Text style={[styles.price, { color: '#000' }]}>Stock:{item.quantity}</Text>
+              <Text style={[styles.price, { color: '#000' }]}>₡{item.price}</Text>     
               <TouchableOpacity style={styles.addButton}>
                 <Text style={styles.addButtonText}>+</Text>
               </TouchableOpacity>
