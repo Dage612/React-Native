@@ -5,7 +5,10 @@ import { useRoute } from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import InventoryScreen from '../../screens/inventoryScreen/Inventory';
-import BillScreen from '../../screens/billScreen/Bill';
+import BillScreen from '../../screens/billScreen/bill';
+import BillInitScreen from '../../screens/billScreen/biilInitScreen/billInit';
+
+
 
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -23,10 +26,10 @@ const TabBillScreen = () => {
         }}
       >
         <Tab.Screen 
-          name="Inventary" 
-          component={InventoryScreen} 
+          name="BillInitScreen" 
+          component={BillInitScreen} 
           options={{
-            title: 'Artículos',
+            title: 'Facturar',
             tabBarIcon: ({ color, size }) => (
               <AntDesign name="search1" size={size} color={color} />
             ),
@@ -37,7 +40,7 @@ const TabBillScreen = () => {
           name="BillScreen" 
           component={BillScreen} 
           options={{
-            title: 'Facturar',
+            title: 'Carrito',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="cash" size={size} color={color} />
             ),
