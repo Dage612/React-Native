@@ -22,7 +22,7 @@ const TabBillScreen = () => {
           headerShown:false,
           tabBarActiveTintColor: 'white',
           tabBarInactiveTintColor: 'gray',
-          tabBarStyle: { backgroundColor: 'blue' }
+          tabBarStyle: { backgroundColor: 'black' }
         }}
       >
         <Tab.Screen 

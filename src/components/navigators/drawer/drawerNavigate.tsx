@@ -17,7 +17,7 @@ const DrawerNavigation = () => {
       screenOptions={{
         headerTintColor: 'white',
         headerStyle: {
-          backgroundColor: 'blue',
+          backgroundColor: 'black',
         },
       }}
     >

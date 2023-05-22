@@ -8,7 +8,7 @@ const SettingsScreen = () => {
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
-          <Button title="Cerrar sesión" onPress={LogOut} color="blue" />
+          <Button title="Cerrar sesión" onPress={LogOut} color="black" />
         </View>
       </View>
     </View>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 20,
     paddingBottom: 10,
-    backgroundColor: 'blue',
+    backgroundColor: 'black',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 20,
   },
