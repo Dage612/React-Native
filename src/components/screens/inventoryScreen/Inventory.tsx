@@ -49,7 +49,7 @@ const InventoryScreen = () => {
       <ScrollView contentContainerStyle={styles.listContainer}>
         {paginatedTodos.map((item: Article) => (
           <View style={styles.card} key={item.id}>
-            <Image source={require('C:/Users/Analista/Desktop/SolucionesMovil/FasautoMovil/src/assets/imgs/icon.png')}  style={styles.image} />
+            <Image source={require('C:/Users/David/Desktop/FasautoMovil/src/assets/imgs/icon.png')}  style={styles.image} />
             <View style={styles.cardDetails}>
               <Text style={[styles.title, { color: '#000' }]}>{item.code}</Text>
               <Text style={[styles.description, { color: '#000' }]}>{item.description}</Text>

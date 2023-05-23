@@ -13,7 +13,7 @@ const ResponsiveView: React.FC<ResponsiveViewProps> = ({ children }) => {
       style={{
         width: width,
         height: height,
-        backgroundColor: 'blanchedalmond',
+        backgroundColor: 'black',
       }}
     >
       {children}

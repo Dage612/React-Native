@@ -17,8 +17,11 @@ const DrawerNavigation = () => {
       screenOptions={{
         headerTintColor: 'white',
         headerStyle: {
-          backgroundColor: 'black',
+          backgroundColor: '#0604a3',
         },
+        drawerStyle:{
+          backgroundColor: 'white',
+        }
       }}
     >
       <Drawer.Screen name="Facturacion" component={TabBillScreen} options={{title: 'Facturación'}} />
